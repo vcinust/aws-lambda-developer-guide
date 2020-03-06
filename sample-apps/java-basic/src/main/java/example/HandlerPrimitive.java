@@ -10,7 +10,7 @@ import com.google.gson.GsonBuilder;
 import java.util.Map;
 
 // Handler value: example.Handler
-public class Handler implements RequestHandler<Map<String,String>, Integer>{
+public class HandlerPrimitive implements RequestHandler<Map<String,String>, Integer>{
   Gson gson = new GsonBuilder().setPrettyPrinting().create();
   @Override
   public Integer handleRequest(Map<String,String> event, Context context)
