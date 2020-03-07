@@ -1,6 +1,7 @@
 package example;
 
 import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 
 import com.google.gson.Gson;
@@ -26,24 +27,28 @@ public class HandlerStream implements RequestStreamHandler {
   @Override
   public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException
   {
-    // log execution details
-    // process event
+    LambdaLogger logger = context.getLogger();
     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("US-ASCII")));
-    //PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outputStream, Charset.forName("US-ASCII"))));
-    OutputStreamWriter writer = new OutputStreamWriter(outputStream, Charset.forName("US-ASCII"));
-    try 
+    PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outputStream, Charset.forName("US-ASCII"))));
+    try
     {
       HashMap event = gson.fromJson(reader, HashMap.class);
-      String output = gson.toJson(event);
-      //writer.write(output, 0, output.length());
-      outputStream.write(123);
-      System.out.println("OUTPUT: " + output);
-      System.out.println("EVENT TYPE: " + event.getClass().toString());
+      logger.log("STREAM TYPE: " + inputStream.getClass().toString());
+      logger.log("EVENT TYPE: " + event.getClass().toString());
+      writer.write(gson.toJson(event));
+      if (writer.checkError())
+      {
+        logger.log("WARNING: Writer encountered an error.");
+      }
     }
     catch (IllegalStateException | JsonSyntaxException exception)
     {
-      System.out.println(exception.toString());
+      logger.log(exception.toString());
     }
-    System.out.println("STREAM TYPE: " + inputStream.getClass().toString());
+    finally
+    {
+      reader.close();
+      writer.close();
+    }
   }
 }
