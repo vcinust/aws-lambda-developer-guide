@@ -24,8 +24,8 @@ class InvokeTest {
     Context context = new TestContext();
     String requestId = context.getAwsRequestId();
     Handler handler = new Handler();
-    Integer result = handler.handleRequest(event, context);
-    assertTrue(true);
+    String result = handler.handleRequest(event, context);
+    assertTrue(result.contains("SUCCESS"));
   }
 
 }
