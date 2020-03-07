@@ -10,10 +10,10 @@ import com.google.gson.GsonBuilder;
 import java.util.Map;
 
 // Handler value: example.Handler
-public class Handler implements RequestHandler<Map<String,String>, Integer>{
+public class Handler implements RequestHandler<Map<String,String>, String>{
   Gson gson = new GsonBuilder().setPrettyPrinting().create();
   @Override
-  public Integer handleRequest(Map<String,String> event, Context context)
+  public String handleRequest(Map<String,String> event, Context context)
   {
     LambdaLogger logger = context.getLogger();
     String response = new String("SUCCESS");
@@ -23,6 +23,6 @@ public class Handler implements RequestHandler<Map<String,String>, Integer>{
     // process event
     logger.log("EVENT: " + gson.toJson(event));
     logger.log("EVENT TYPE: " + event.getClass().toString());
-    return context.getRemainingTimeInMillis() ;
+    return response;
   }
 }
