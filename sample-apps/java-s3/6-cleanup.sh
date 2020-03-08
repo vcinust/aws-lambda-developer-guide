@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eo pipefail
 APP_BUCKET=$(aws cloudformation describe-stack-resource --stack-name java-s3 --logical-resource-id bucket --query 'StackResourceDetail.PhysicalResourceId' --output text)
-aws cloudformation delete-stack --stack-name java-s3 --retain-resources bucket
+aws cloudformation delete-stack --stack-name java-s3
 echo "Deleted function stack"
 if [ -f bucket-name.txt ]; then
     ARTIFACT_BUCKET=$(cat bucket-name.txt)
@@ -22,5 +22,5 @@ while true; do
         * ) echo "Response must start with y or n.";;
     esac
 done
-rm -f 2-deploy.sh out.yml out.json event.json
+rm -f 3-deploy.sh out.yml out.json event.json
 rm -rf build .gradle target

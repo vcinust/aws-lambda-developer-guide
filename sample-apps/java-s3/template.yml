@@ -4,6 +4,7 @@ Description: An AWS Lambda application that calls the Lambda API.
 Resources:
   bucket:
     Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
   function:
     Type: AWS::Serverless::Function
     Properties:
