@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eo pipefail
 APP_BUCKET=$(aws cloudformation describe-stack-resource --stack-name java-s3 --logical-resource-id bucket --query 'StackResourceDetail.PhysicalResourceId' --output text)
-aws cloudformation delete-stack --stack-name java-s3
+aws cloudformation delete-stack --stack-name java-s3 --retain-resources bucket
 echo "Deleted function stack"
 if [ -f bucket-name.txt ]; then
     ARTIFACT_BUCKET=$(cat bucket-name.txt)
