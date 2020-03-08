@@ -13,5 +13,5 @@ if [ -f bucket-name.txt ]; then
         esac
     done
 fi
-rm -f 2-deploy.sh out.yml out.json
+rm -f 2-deploy.sh out.yml out.json event.json
 rm -rf build .gradle target

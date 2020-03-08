@@ -1,17 +1,10 @@
 {
-    "records": [
+    "Records": [
         {
             "awsRegion": "us-east-2",
             "eventName": "ObjectCreated:Put",
             "eventSource": "aws:s3",
-            "eventTime": {
-                "iMillis": 1583654493035,
-                "iChronology": {
-                    "iBase": {
-                        "iMinDaysInFirstWeek": 4
-                    }
-                }
-            },
+            "eventTime": "2020-03-08T00:30:12.456Z",
             "eventVersion": "2.1",
             "requestParameters": {
                 "sourceIPAddress": "174.255.255.156"
@@ -27,7 +20,7 @@
                     "ownerIdentity": {
                         "principalId": "A3XMPLFAF2AI3E"
                     },
-                    "arn": "arn:aws:s3:::java-s3-bucket-99fe9frm1q2t"
+                    "arn": "arn:aws:s3:::BUCKET_NAME"
                 },
                 "object": {
                     "key": "inbound/sample-java-s3.png",
