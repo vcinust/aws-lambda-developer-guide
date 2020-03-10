@@ -4,13 +4,6 @@ This project creates a function and supporting resources:
 - template.yml - An AWS CloudFormation template that creates an application.
 - 1-create-bucket.sh, 2-deploy.sh, etc. - Shell scripts that use the AWS CLI to deploy and manage the application.
 
-# TODO
-When you adapt this project for your own application, complete the following tasks.
-
-- Change stack name in `2-deploy.sh.template`, `3-invoke.sh`, `4-cleanup.sh`
-- (optional) Change function name in `template.yml`, `3-invoke.sh`
-- (optional) Change function folder name in `template.yml`, `2-deploy.sh.template`
-
 ![Architecture](/sample-apps/nodejs-apig/images/sample-nodejs-apig.png)
 
 Use the following instructions to deploy the sample application.
@@ -54,7 +47,7 @@ Run `3-invoke.sh` to invoke the function.
         "ExecutedVersion": "$LATEST"
     }
 
-The functions in this application are instrumented with AWS X-Ray. Open the [X-Ray console](https://console.aws.amazon.com/xray/home#/service-map) to view the service map. The following service map shows the function calling Amazon S3.
+The functions in this application are instrumented with AWS X-Ray. Open the [X-Ray console](https://console.aws.amazon.com/xray/home#/service-map) to view the service map. The following service map shows the function invoked in two ways.
 
 ![Service Map](/sample-apps/nodejs-apig/images/nodejs-apig-servicemap.png)
 

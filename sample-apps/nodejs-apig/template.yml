@@ -2,6 +2,11 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: An AWS Lambda application that calls the Lambda API.
 Resources:
+  api:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: api
+      TracingEnabled: true
   function:
     Type: AWS::Serverless::Function
     Properties:
@@ -20,5 +25,7 @@ Resources:
         getEndpoint:
           Type: Api
           Properties:
+            RestApiId: !Ref api
             Path: /
             Method: GET
+
