@@ -3,11 +3,24 @@ const AWS = require('aws-sdk')
 const lambda = new AWS.Lambda()
 
 // Handler
-exports.handler = function(event, context) {
+exports.handler = async function(event, context, callback) {
+  var response = {
+    "statusCode": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "isBase64Encoded": false,
+    "multiValueHeaders": { 
+      "headerName": ["headerValue", "headerValue2"],
+    },
+    "body": ""
+  }
   console.log('ENVIRONMENT VARIABLES: ' + serialize(process.env))
   console.log('CONTEXT: ' + serialize(context))
   console.log('EVENT: ' + serialize(event))
-  return getAccountSettings()
+  var accountSettings = await getAccountSettings()
+  response.body = serialize(accountSettings.AccountUsage)
+  return response
 }
 
 // Use SDK client

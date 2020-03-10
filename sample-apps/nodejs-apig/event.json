@@ -1,1 +1,101 @@
-{}
+{
+    "resource": "/",
+    "path": "/",
+    "httpMethod": "GET",
+    "headers": {
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9",
+        "cookie": "s_fid=7AAB63FC1AFD9BBF-06436BE009956DE2; regStatus=pre-register; mp_1919205b2da72e4da3b9b6639b444d59_mixpanel=%7B%22distinct_id%22%3A%20%22164f7ebc1ea86c-075a0ca12befed-2711639-384000-164f7ebc1eb874%22%2C%22%24initial_referrer%22%3A%20%22%24direct%22%2C%22%24initial_referring_domain%22%3A%20%22%24direct%22%2C%22%24search_engine%22%3A%20%22google%22%7D; s_vn=1599246536533%26vn%3D3; s_dslv=1575569671883; s_pers=%20s_vnum%3D1585878446729%2526vn%253D1%7C1585878446729%3B%20s_invisit%3Dtrue%7C1583289015261%3B%20s_nr%3D1583287215264-Repeat%7C1591063215264%3B",
+        "Host": "70ixmpl4fl.execute-api.us-east-2.amazonaws.com",
+        "sec-fetch-dest": "document",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-site": "none",
+        "upgrade-insecure-requests": "1",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36",
+        "X-Amzn-Trace-Id": "Root=1-5e66d96f-7491f09xmpl79d18acf3d050",
+        "X-Forwarded-For": "52.255.255.12",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },
+    "multiValueHeaders": {
+        "accept": [
+            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+        ],
+        "accept-encoding": [
+            "gzip, deflate, br"
+        ],
+        "accept-language": [
+            "en-US,en;q=0.9"
+        ],
+        "cookie": [
+            "s_fid=7AABXMPL1AFD9BBF-0643XMPL09956DE2; regStatus=pre-register;"
+        ],
+        "Host": [
+            "70ixmpl4fl.execute-api.ca-central-1.amazonaws.com"
+        ],
+        "sec-fetch-dest": [
+            "document"
+        ],
+        "sec-fetch-mode": [
+            "navigate"
+        ],
+        "sec-fetch-site": [
+            "none"
+        ],
+        "upgrade-insecure-requests": [
+            "1"
+        ],
+        "User-Agent": [
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36"
+        ],
+        "X-Amzn-Trace-Id": [
+            "Root=1-5e66d96f-7491f09824b79d18acf3d050"
+        ],
+        "X-Forwarded-For": [
+            "52.255.255.12"
+        ],
+        "X-Forwarded-Port": [
+            "443"
+        ],
+        "X-Forwarded-Proto": [
+            "https"
+        ]
+    },
+    "queryStringParameters": null,
+    "multiValueQueryStringParameters": null,
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+        "resourceId": "2gxmpl",
+        "resourcePath": "/",
+        "httpMethod": "GET",
+        "extendedRequestId": "JJbxmplHYosFVYQ=",
+        "requestTime": "10/Mar/2020:00:03:59 +0000",
+        "path": "/Prod/",
+        "accountId": "123456789012",
+        "protocol": "HTTP/1.1",
+        "stage": "default",
+        "domainPrefix": "70ixmpl4fl",
+        "requestTimeEpoch": 1583798639428,
+        "requestId": "77375676-xmpl-4b79-853a-f982474efe18",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": null,
+            "cognitoIdentityId": null,
+            "caller": null,
+            "sourceIp": "52.255.255.12",
+            "principalOrgId": null,
+            "accessKey": null,
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": null,
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36",
+            "user": null
+        },
+        "domainName": "70ixmpl4fl.execute-api.us-east-2.amazonaws.com",
+        "apiId": "70ixmpl4fl"
+    },
+    "body": null,
+    "isBase64Encoded": false
+}

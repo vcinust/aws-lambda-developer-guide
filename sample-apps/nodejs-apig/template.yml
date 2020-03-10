@@ -16,3 +16,9 @@ Resources:
         - AWSLambdaReadOnlyAccess
         - AWSXrayWriteOnlyAccess
       Tracing: Active
+      Events:
+        getEndpoint:
+          Type: Api
+          Properties:
+            Path: /
+            Method: GET
