@@ -3,7 +3,7 @@ const AWS = require('aws-sdk')
 const lambda = new AWS.Lambda()
 
 // Handler
-exports.handler = async function(event, context, callback) {
+exports.handler = async function(event, context) {
   var response = {
     "statusCode": 200,
     "headers": {
@@ -11,7 +11,7 @@ exports.handler = async function(event, context, callback) {
     },
     "isBase64Encoded": false,
     "multiValueHeaders": { 
-      "headerName": ["headerValue", "headerValue2"],
+      "X-Custom-Header": ["My value", "My other value"],
     },
     "body": ""
   }
