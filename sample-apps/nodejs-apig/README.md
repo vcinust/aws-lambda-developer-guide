@@ -39,12 +39,33 @@ Run `2-deploy.sh` to deploy the application.
 This script uses AWS CloudFormation to deploy the Lambda functions and an IAM role. If the AWS CloudFormation stack that contains the resources already exists, the script updates it with any changes to the template or function code.
 
 # Test
-Run `3-invoke.sh` to invoke the function.
+Run `3-invoke.sh` to invoke the function directly with a test event (`event.json`).
 
     nodejs-apig$ ./3-invoke.sh
     {
         "StatusCode": 200,
         "ExecutedVersion": "$LATEST"
+    }
+
+To invoke the function with the REST API, run the `4-get.sh` script. This script uses cURL to send a GET request to the API endpoint.
+
+    nodejs-apig$ ./4-get.sh
+    > GET /api/ HTTP/1.1
+    > Host: mf2fxmplbj.execute-api.us-east-2.amazonaws.com
+    > Accept: */*
+    >
+    < HTTP/1.1 200 OK
+    < Content-Type: application/json
+    < Content-Length: 55
+    < Connection: keep-alive
+    < x-amzn-RequestId: cb863771-xmpl-47cb-869e-3433209223a8
+    < X-Custom-Header: My value
+    < X-Custom-Header: My other value
+    < X-Amzn-Trace-Id: Root=1-5e67ea83-4826xmpl9be7bf422bf70049
+    ...
+    {
+      "TotalCodeSize": 184440616,
+      "FunctionCount": 39
     }
 
 The functions in this application are instrumented with AWS X-Ray. Open the [X-Ray console](https://console.aws.amazon.com/xray/home#/service-map) to view the service map. The following service map shows the function invoked in two ways.
@@ -64,6 +85,6 @@ Finally, view the application in the Lambda console.
   ![Application](/sample-apps/nodejs-apig/images/nodejs-apig-application.png)
 
 # Cleanup
-To delete the application, run `4-cleanup.sh`.
+To delete the application, run `5-cleanup.sh`.
 
-    nodejs-apig$ ./4-cleanup.sh
+    nodejs-apig$ ./5-cleanup.sh
