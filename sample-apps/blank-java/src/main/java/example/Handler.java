@@ -23,11 +23,20 @@ import java.util.Map;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import com.amazonaws.xray.AWSXRay;
+import com.amazonaws.xray.interceptors.TracingInterceptor;
+import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration;
+
 // Handler value: example.Handler
 public class Handler implements RequestHandler<SQSEvent, String>{
   private static final Logger logger = LoggerFactory.getLogger(Handler.class);
   Gson gson = new GsonBuilder().setPrettyPrinting().create();
-  LambdaAsyncClient lambdaClient = LambdaAsyncClient.create();
+  LambdaAsyncClient lambdaClient = LambdaAsyncClient
+          .builder()
+          .overrideConfiguration(ClientOverrideConfiguration.builder()
+            .addExecutionInterceptor(new TracingInterceptor())
+            .build())
+          .build();
   @Override
   public String handleRequest(SQSEvent event, Context context)
   {
