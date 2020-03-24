@@ -5,7 +5,13 @@ if [ $1 ]
 then
   case $1 in
     apig)
-      PAYLOAD='file://event-apigv1.json'
+      PAYLOAD='file://events/apigateway-v1.json'
+      ;;
+    cws)
+      PAYLOAD='file://events/cloudwatch-scheduled.json'
+      ;;
+    sns)
+      PAYLOAD='file://events/sns.json'
       ;;
     *)
       echo -n "Unknown event type"
