@@ -1,4 +1,4 @@
-# Basic Function with Minimal Dependencies (Java)
+# Basic Function with Event Library Types (Java)
 
 ![Architecture](/sample-apps/java-events/images/sample-java-events.png)
 
