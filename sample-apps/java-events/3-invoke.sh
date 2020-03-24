@@ -14,7 +14,22 @@ then
       PAYLOAD='file://events/cloudwatch-logs.json'
       ;;
     sns)
-      PAYLOAD='file://events/sns.json'
+      PAYLOAD='file://events/sns-notification.json'
+      ;;
+    cfg)
+      PAYLOAD='file://events/config-rule.json'
+      ;;
+    cc)
+      PAYLOAD='file://events/codecommit-push.json'
+      ;;
+    cog)
+      PAYLOAD='file://events/cognito-sync.json'
+      ;;
+    fh)
+      PAYLOAD='file://events/firehose-record.json'
+      ;;
+    lex)
+      PAYLOAD='file://events/lex-flowers.json'
       ;;
     *)
       echo -n "Unknown event type"
