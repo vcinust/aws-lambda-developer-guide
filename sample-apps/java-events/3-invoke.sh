@@ -10,6 +10,9 @@ then
     cws)
       PAYLOAD='file://events/cloudwatch-scheduled.json'
       ;;
+    cwl)
+      PAYLOAD='file://events/cloudwatch-logs.json'
+      ;;
     sns)
       PAYLOAD='file://events/sns.json'
       ;;

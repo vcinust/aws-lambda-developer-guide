@@ -17,11 +17,7 @@ public class HandlerCodeCommit implements RequestHandler<CodeCommitEvent, String
     LambdaLogger logger = context.getLogger();
     String response = new String("200 OK");
     // log execution details
-    logger.log("ENVIRONMENT VARIABLES: " + gson.toJson(System.getenv()));
-    logger.log("CONTEXT: " + gson.toJson(context));
-    // process event
-    logger.log("EVENT: " + gson.toJson(event));
-    logger.log("EVENT TYPE: " + event.getClass().toString());
+    Util.logEnvironment(event, context, gson);
     return response;
   }
 }

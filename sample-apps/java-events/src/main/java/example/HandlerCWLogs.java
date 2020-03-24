@@ -41,8 +41,9 @@ public class HandlerCWLogs implements RequestHandler<CloudWatchLogsEvent, String
       });
       logger.log(output.toString());
     } catch(IOException e) {
-        logger.log("UNZIP ERROR: " + e.toString());
+        logger.log("ERROR: " + e.toString());
     }
+    // log execution details
     Util.logEnvironment(event, context, gson);
     return response;
   }
