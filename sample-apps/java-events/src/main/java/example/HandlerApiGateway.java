@@ -12,8 +12,8 @@ import com.google.gson.GsonBuilder;
 import java.util.Map;
 import java.util.HashMap;
 
-// Handler value: example.Handler
-public class HandlerApiG implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent>{
+// Handler value: example.HandlerApiGateway
+public class HandlerApiGateway implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent>{
   Gson gson = new GsonBuilder().setPrettyPrinting().create();
   @Override
   public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent event, Context context)
