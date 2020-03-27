@@ -13,3 +13,4 @@ if [ -f bucket-name.txt ]; then
     done
 fi
 rm -f out.yml out.json
+rm -rf src/blank-csharp/bin src/blank-csharp/obj
