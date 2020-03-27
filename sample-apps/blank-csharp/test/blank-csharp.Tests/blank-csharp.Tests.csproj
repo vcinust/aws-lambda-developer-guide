@@ -10,6 +10,6 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ec2spot\ec2spot.csproj" />
+    <ProjectReference Include="..\..\src\blank-csharp\project.csproj" />
   </ItemGroup>
 </Project>

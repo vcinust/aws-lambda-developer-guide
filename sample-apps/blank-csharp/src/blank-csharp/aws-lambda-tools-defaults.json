@@ -15,5 +15,5 @@
   "function-runtime":"dotnetcore2.1",
   "function-memory-size" : 512,
   "function-timeout" : 30,
-  "function-handler" : "ec2spot::ec2spot.Function::FunctionHandler"
+  "function-handler" : "blank-csharp::blankCsharp.Function::FunctionHandler"
 }

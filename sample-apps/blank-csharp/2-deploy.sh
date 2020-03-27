@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eo pipefail
 ARTIFACT_BUCKET=$(cat bucket-name.txt)
-cd src/ec2spot
+cd src/blank-csharp
 dotnet lambda package
 cd ../../
 aws cloudformation package --template-file template.yml --s3-bucket $ARTIFACT_BUCKET --output-template-file out.yml
