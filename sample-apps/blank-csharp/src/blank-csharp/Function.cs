@@ -9,6 +9,8 @@ using Amazon.Lambda.Model;
 using Amazon.Lambda.Core;
 using Amazon.XRay.Recorder.Core;
 using Amazon.XRay.Recorder.Handlers.AwsSdk;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 
@@ -28,7 +30,7 @@ namespace blankCsharp
       await callLambda();
     }
 
-    public async Task<AccountUsage> FunctionHandler(Dictionary<string, string> input, ILambdaContext context)
+    public async Task<AccountUsage> FunctionHandler(Dictionary<string, string> invocationEvent, ILambdaContext context)
     {
       GetAccountSettingsResponse accountSettings;
       try
@@ -39,8 +41,10 @@ namespace blankCsharp
       {
         throw ex;
       }
-      var accountUsage = accountSettings.AccountUsage;
-      LambdaLogger.Log("FUNCTION COUNT: " + accountUsage.FunctionCount);
+      AccountUsage accountUsage = accountSettings.AccountUsage;
+      LambdaLogger.Log("ENVIRONMENT VARIABLES: " + JsonConvert.SerializeObject(System.Environment.GetEnvironmentVariables()));
+      LambdaLogger.Log("EVENT: " + JsonConvert.SerializeObject(invocationEvent));
+      LambdaLogger.Log("CONTEXT: " + JsonConvert.SerializeObject(context));
       return accountUsage;
     }
 
