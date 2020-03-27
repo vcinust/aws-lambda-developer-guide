@@ -14,36 +14,41 @@ using Amazon.XRay.Recorder.Handlers.AwsSdk;
 
 namespace blankCsharp
 {
-    public class Function
-    {
-        private static AmazonLambdaClient lambdaClient;
+  public class Function
+  {
+    private static AmazonLambdaClient lambdaClient;
 
-        static Function() {
-          AWSSDKHandler.RegisterXRayForAllServices();
-          lambdaClient = new AmazonLambdaClient();
-        }
-
-        public async Task<AccountUsage> FunctionHandler(Dictionary<string, string> input, ILambdaContext context)
-        {
-          GetAccountSettingsResponse accountSettings;
-          try
-          {
-            accountSettings = await callLambda();
-          }
-          catch (AmazonLambdaException ex)
-          {
-            throw ex;
-          }
-          var accountUsage = accountSettings.AccountUsage;
-          Console.WriteLine(accountUsage);
-          return accountUsage;
-        }
-
-        public async Task<GetAccountSettingsResponse> callLambda()
-        {
-          var request = new GetAccountSettingsRequest();
-          var response = await lambdaClient.GetAccountSettingsAsync(request);
-          return response;
-        }
+    static Function() {
+      initialize();
     }
+
+    static async void initialize() {
+      AWSSDKHandler.RegisterXRayForAllServices();
+      lambdaClient = new AmazonLambdaClient();
+      await callLambda();
+    }
+
+    public async Task<AccountUsage> FunctionHandler(Dictionary<string, string> input, ILambdaContext context)
+    {
+      GetAccountSettingsResponse accountSettings;
+      try
+      {
+        accountSettings = await callLambda();
+      }
+      catch (AmazonLambdaException ex)
+      {
+        throw ex;
+      }
+      var accountUsage = accountSettings.AccountUsage;
+      LambdaLogger.Log("FUNCTION COUNT: " + accountUsage.FunctionCount);
+      return accountUsage;
+    }
+
+    public static async Task<GetAccountSettingsResponse> callLambda()
+    {
+      var request = new GetAccountSettingsRequest();
+      var response = await lambdaClient.GetAccountSettingsAsync(request);
+      return response;
+    }
+  }
 }
