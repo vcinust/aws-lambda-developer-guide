@@ -43,8 +43,8 @@ namespace blankCsharp
       }
       AccountUsage accountUsage = accountSettings.AccountUsage;
       LambdaLogger.Log("ENVIRONMENT VARIABLES: " + JsonConvert.SerializeObject(System.Environment.GetEnvironmentVariables()));
-      LambdaLogger.Log("EVENT: " + JsonConvert.SerializeObject(invocationEvent));
       LambdaLogger.Log("CONTEXT: " + JsonConvert.SerializeObject(context));
+      LambdaLogger.Log("EVENT: " + JsonConvert.SerializeObject(invocationEvent));
       return accountUsage;
     }
 
