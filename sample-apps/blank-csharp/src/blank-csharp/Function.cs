@@ -7,6 +7,7 @@ using Amazon.Util;
 using Amazon.Lambda;
 using Amazon.Lambda.Model;
 using Amazon.Lambda.Core;
+using Amazon.Lambda.SQSEvents;
 using Amazon.XRay.Recorder.Core;
 using Amazon.XRay.Recorder.Handlers.AwsSdk;
 using Newtonsoft.Json;
@@ -30,7 +31,7 @@ namespace blankCsharp
       await callLambda();
     }
 
-    public async Task<AccountUsage> FunctionHandler(Dictionary<string, string> invocationEvent, ILambdaContext context)
+    public async Task<AccountUsage> FunctionHandler(SQSEvent invocationEvent, ILambdaContext context)
     {
       GetAccountSettingsResponse accountSettings;
       try

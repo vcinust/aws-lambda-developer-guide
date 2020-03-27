@@ -1,6 +1,6 @@
 # EC2 Spot Instance function
 
-![Architecture](/sample-apps/blank-csharp/images/sample-ec2spot.png)
+![Architecture](/sample-apps/blank-csharp/images/sample-blank-csharp.png)
 
 The project source includes function code and supporting resources:
 
@@ -30,7 +30,9 @@ To create a new bucket for deployment artifacts, run `1-create-bucket.sh`. Or, i
 To deploy the application, run `2-deploy.sh`.
 
     blank-csharp$ ./2-deploy.sh
-    Uploading to e678bc216e6a0d510d661ca9ae2fd941  2737254 / 2737254.0  (100.00%)
+    Amazon Lambda Tools for .NET Core applications (3.3.1)
+    Executing publish command
+    Uploading to e678bc216e6a0d510d661ca9ae2fd941  1009985 / 1009985.0  (100.00%)
     Successfully packaged artifacts and wrote output template to file out.yml.
     Waiting for changeset to be created..
     Waiting for stack create/update to complete
@@ -45,22 +47,15 @@ To invoke the function, run `3-invoke.sh`.
         "StatusCode": 200,
         "ExecutedVersion": "$LATEST"
     }
+    {"FunctionCount":43,"TotalCodeSize":362867335}
 
 The application uses AWS X-Ray to trace requests. Open the [X-Ray console](https://console.aws.amazon.com/xray/home#/service-map) to view the service map. The following service map shows the function managing spot instances in Amazon EC2.
 
-![Service Map](/sample-apps/blank-csharp/images/sample-ec2spot-servicemap.png)
+![Service Map](/sample-apps/blank-csharp/images/blank-csharp-servicemap.png)
 
 Choose a node in the main function graph. Then choose **View traces** to see a list of traces. Choose any trace to view a timeline that breaks down the work done by the function.
 
-![Trace](/sample-apps/blank-csharp/images/sample-ec2spot-timeline.png)
-
-Finally, view the application in the Lambda console.
-
-*To view the application*
-1. Open the [applications page](https://console.aws.amazon.com/lambda/home#/applications) in the Lambda console.
-2. Choose **blank-csharp**.
-
-  ![Application](/sample-apps/blank-csharp/images/sample-ec2spot-application.png)
+![Trace](/sample-apps/blank-csharp/images/blank-csharp-trace.png)
 
 # Cleanup
 To delete the application, run the cleanup script.
