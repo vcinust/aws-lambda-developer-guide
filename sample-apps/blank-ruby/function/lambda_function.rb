@@ -1,10 +1,19 @@
+# lambda_function.rb
+require 'logger'
 require 'json'
-$region = ENV['AWS_REGION']
+require 'aws-sdk-lambda'
+$client = Aws::Lambda::Client.new()
+$client.get_account_settings()
+
+require 'aws-xray-sdk/lambda'
 
 def lambda_handler(event:, context:)
-    puts 'Region:'
-    puts $region
-    puts 'All environment variables:'
-    puts ENV.to_a
-    { status: 'success!' }
+  logger = Logger.new($stdout)
+  logger.info('## ENVIRONMENT VARIABLES')
+  logger.info(ENV.to_a)
+  logger.info('## EVENT')
+  logger.info(JSON.generate(event))
+  logger.info('## CONTEXT')
+  logger.info(context.log_stream_name)
+  $client.get_account_settings().account_usage
 end
