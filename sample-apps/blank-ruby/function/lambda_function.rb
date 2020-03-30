@@ -12,8 +12,9 @@ def lambda_handler(event:, context:)
   logger.info('## ENVIRONMENT VARIABLES')
   logger.info(ENV.to_a)
   logger.info('## EVENT')
-  logger.info(JSON.generate(event))
+  logger.info(event.to_json)
   logger.info('## CONTEXT')
+  logger.info(context)
   logger.info(context.log_stream_name)
   $client.get_account_settings().account_usage
 end
