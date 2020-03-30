@@ -10,11 +10,15 @@ require 'aws-xray-sdk/lambda'
 def lambda_handler(event:, context:)
   logger = Logger.new($stdout)
   logger.info('## ENVIRONMENT VARIABLES')
-  logger.info(ENV.to_a)
+  vars = Hash.new
+  ENV.each do |variable|
+    vars[variable[0]] = variable[1]
+  end
+  logger.info(vars.to_json)
   logger.info('## EVENT')
   logger.info(event.to_json)
   logger.info('## CONTEXT')
   logger.info(context)
   logger.info(context.log_stream_name)
-  $client.get_account_settings().account_usage
+  $client.get_account_settings().account_usage.to_h
 end
