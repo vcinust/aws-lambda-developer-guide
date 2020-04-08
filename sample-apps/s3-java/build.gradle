@@ -52,3 +52,28 @@ java {
 }
 
 build.dependsOn packageSmall
+
+version = '1.0-DEVELOPMENT'
+
+//afterEvaluate {
+//    configure(allProcessResourcesTasks()) {
+//        filter(ReplaceTokens,
+//                tokens: [version: project.version, buildtime: new Date().format('yyyyMMdd-HHmm') ])
+//    }
+//}
+//
+//def allProcessResourcesTasks() {
+//    sourceSets.main.processResourcesTaskName.collect {
+//        tasks[it]
+//    }
+//}
+
+processResources {
+    filesMatching('**/aws-config.properties') {
+        //println "processResources application.yml "+it
+        filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [
+                "version": project.version
+                ,"buildtime": new Date().format('yyyyMMdd-HHmm')
+        ])
+    }
+}
