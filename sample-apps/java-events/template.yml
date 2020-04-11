@@ -6,7 +6,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: build/distributions/java-events.zip
-      Handler: example.HandlerApiGateway
+      Handler: example.HandlerFile
       Runtime: java8
       Description: Java function
       MemorySize: 512
